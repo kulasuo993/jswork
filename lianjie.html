@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../jquery-3.6.3.min.js"></script>
+<script>
+
+
+    var searchStr = window.location.search
+    if(searchStr.indexOf('?') !== -1){
+        var str = searchStr.substr(1)      
+        var newstr = str.split('&')
+        function spliceIntoChunks(arr, chunkSize) {
+        const res = [];
+        while (newstr.length > 0) {
+            const chunk = arr.splice(0, chunkSize);
+            res.push(chunk);
+        }
+            return res;
+        }
+
+        const arr = newstr;
+        var new2 = (spliceIntoChunks(arr, 1));    
+        
+        
+        for(i = 0 ; i < new2.length ; i++){
+           var new3 = new2[i]
+            for(j = 0 ; j < new3.length ; j++){
+                new4 = new3[j].split('=')
+                
+            }
+    //btn3.innerHTML = `还剩${time}秒可再次发送`
+            function fn(a1,b1){
+              if(a1 = true){
+                a1 = new4[0]
+                console.log(`${a1}:${b1}`)
+              }else{
+                console.log('')
+              }
+            }
+            fn(new4[0],new4[1])
+        }
+    }
+    else {
+        str = null
+    }
+
+</script>
+</html>

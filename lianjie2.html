@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接</title>
+</head>
+<body>
+    
+</body>
+<script src="../jquery-3.6.3.min.js"></script>
+<script>
+    function getParam(key){
+        var searchStr = window.location.search
+        if(searchStr.indexOf('?') !== -1){
+            var str = searchStr.substr(1)
+            var newstr = str.split('&')
+            var obj = {}
+            for (i = 0 ; i < newstr.length ; i++){
+                var new1 = newstr[i].split('=')
+                obj[new1[0]] = new1[1]
+            }
+            console.log(obj)
+            if(obj[key] !== undefined ){
+                return obj[key]
+            }else{
+                return null
+            }
+        }
+        else{
+            return null
+        }
+    }
+    console.log(getParam('app_id'))
+</script>
+</html>
