@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"><!--  -->
+    <meta http-equiv="Cache-Control" content="max-age=-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>demo</title>
+    <style>
+        html,body{
+            background: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+   <div>
+        <input type="text" value="2023-02-24 09:00:00" class="ipt">
+        <button class="btn4">开始</button>
+        <p class="coundown"></p>
+    </div>
+</body>
+<script type="text/javascript" src="https://image.gaeamobile.net/javascript/20210924/120356/jquery.min.js"></script>
+<script>
+    window.onload = function(){
+        // 日期格式
+        var myDate = new Date();  
+
+        myDate.getFullYear(); //获取完整的年份(4位,1970-????)  
+
+        myDate.getMonth(); //获取当前月份(0-11,0代表1月) 所以获取当前月份是 myDate.getMonth()+1;   
+
+        myDate.getDate(); //获取当前日(1-31)  
+
+        myDate.getDay(); //获取当前星期X(0-6,0代表星期天)  
+
+        myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)  
+
+        myDate.getHours(); //获取当前小时数(0-23)  
+
+        myDate.getMinutes(); //获取当前分钟数(0-59)  
+
+        myDate.getSeconds(); //获取当前秒数(0-59)  
+
+        myDate.getMilliseconds(); //获取当前毫秒数(0-999)  
+
+        myDate.toLocaleDateString(); //获取当前日期
+            
+        myDate.toLocaleTimeString(); //获取当前时间  
+
+        myDate.toLocaleString( ); //获取日期与时间 
+        
+        Date.parse(new Date()) // 表示某个日期的字符串，并返回从1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的UTC时间）的毫秒数
+
+        // 给一个时间戳（1677204839000），怎么转化成日期格式呢？？？
+
+
+
+        // 倒计时
+        var btn4 = document.getElementsByClassName('btn4')[0]
+        var coundown = document.getElementsByClassName('coundown')[0]
+        btn4.addEventListener('click', function(){
+            setInterval(countDown, 1000);
+        })
+        
+        function countDown() {
+            // 获取input的值
+            var overTime = document.getElementsByClassName('ipt')[0].getAttribute('value')
+            // 获取input截止时间的时间戳（单位毫秒）
+            var inputTime = new Date(overTime);
+            var day,hour,minute,second;
+            //获取当前时间的时间戳（单位毫秒）
+            var nowTime = new Date();
+            //距离结束时间的毫秒数
+            var times = inputTime.getTime() - nowTime.getTime();
+            //计算天数
+            var d = Math.floor(times/(1000*60*60*24))
+            day = d < 10 ? "0" + d : d;
+            //计算小时数
+            var h = Math.floor(times/(1000*60*60)%24);
+            hour = h < 10 ? "0" + h : h;
+            //计算分钟数
+            var m = Math.floor(times/(1000*60)%60);
+            minute = m < 10 ? "0" + m : m;
+            //计算秒数
+            var s =  Math.floor(times/1000%60);
+            second = s < 10 ? "0" + s : s;
+            // 拼接字符串
+            coundown.innerHTML = `${day}天${hour}时${minute}分${second}秒 结束`
+        }
+    }
+ </script>
+</html>

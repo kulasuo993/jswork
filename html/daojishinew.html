@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="2023-02-24 09:00:00" class="time">
+    <button class="btn1">结束</button>
+    <p class="coundown"></p>
+</body>
+<script src="../js/jquery-3.6.3.min.js"></script>
+
+<script>
+    $(function(){
+        var btn1 = $('.btn1')
+        var coundown = $('.coundown')
+        var a1=  setInterval(countDown, 1000)
+        btn1.click(function(){
+            clearInterval(a1) 
+        })
+      
+        // btn1.addEventlistener('click',function(){
+        //     setInterval(countDown,1000)
+        // })
+        function countDown() {
+        var date = new Date('2023-02-21 19:00:00')
+        console.log(date)
+
+        var date_new = new Date
+        console.log(date_new)
+
+        var newdate = date - date_new
+        console.log(newdate)
+        
+        
+        var day,hour,minute,second;
+            //计算天数
+            var d = Math.floor(newdate/(1000*60*60*24))
+            console.log(d)
+            day = (d < 10 ? "0"+ d:d)
+            console.log(day)
+            //计算小时叔
+            var h = Math.floor(newdate/(1000*60*60)%24)
+            console.log(h)
+            hour = h<10 ? "0" + h:h
+            console.log(hour)
+            //计算分钟
+            var m = Math.floor(newdate/(1000*60)%60)
+            minute = m <10 ? '0' + m:m
+            console.log(minute)
+            //计算秒数
+            var s = Math.floor(newdate/1000%60)
+            second = s <10 ? '0' + s:s
+            console.log(second)
+            var abc = `${day}天${hour}时${minute}分${second}秒 结束`
+            console.log(abc)
+            $('.coundown') .text(`${day}天${hour}时${minute}分${second}秒 结束`) 
+        }
+
+    })
+    
+</script>
+
+
+<!-- <script>
+    $(function(){
+        var myDate = new Date()
+        console.log(myDate)
+        
+        myDate.getFullYear()
+        console.log( myDate.getFullYear())
+        
+        myDate.getMonth()+1//获取当前月份(0-11,0代表1月)所以获取当前月份是·myDate.getMonth()+1;
+        console.log( myDate.getMonth()+1)
+       
+        myDate.getDate();//获取当前日(1-31)
+        console.log( myDate.getDate())
+        
+        myDate.getDay();//获取当前星期X(0-6,0代表星期天)
+        console.log( myDate.getDay())
+       
+        myDate.getTime();//获取当前时间(从1970.1.1开始的毫秒数)
+        console.log( myDate.getTime())
+       
+        myDate.getHours();//获取当前小时0-23
+        console.log( myDate.getHours())
+       
+        myDate.getMinutes();//获当前分钟数(0-59)
+        console.log( myDate.getMinutes())
+       
+        myDate.getSeconds();//获取当前秒数(0-59)
+        console.log( myDate.getSeconds())
+       
+        myDate.getMilliseconds()//获取当前毫秒数(0-999)
+        console.log( myDate.getMilliseconds())
+       
+        myDate.toLocaleDateString()//获取当前日期
+        console.log( myDate.toLocaleDateString())
+        
+        myDate.toLocaleTimeString()//获取当前时间
+        console.log( myDate.toLocaleTimeString())
+       
+        myDate.toLocaleString()//获取日期与时间
+        console.log( myDate.toLocaleString())
+        Date.parse(new Date())//·表示某个日期的字符串，并返回从1970-1-1·00:00:00·UTC·到该日期对
+        console.log(Date.parse(new Date()))
+        //给一个时间戳 (167720483988)怎么转化成日期格式呢? ? ?
+        
+        var date = new Date(10097720483988)
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds(); 
+        console.log(Y+M+D+h+m+s)
+
+    })
+</script> -->
+</html>
