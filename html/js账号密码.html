@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ 
+   
+ 
+   
+    .fa1{
+    position: absolute;
+    left:180px;
+    top:12px;
+     font-size: 20px;
+    cursor: pointer;
+    width: 24px;
+    height: 20px;
+    background-image: url(../img/e2.png);
+    background-repeat: no-repeat;
+    background-size: 24px 17px;
+   }
+   .fa2{
+    position: absolute;
+    left:180px;
+    top:12px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 24px;
+    height: 20px;
+    background-image: url(../img/e1.png);
+    background-repeat: no-repeat;
+    background-size: 24px 17px;
+   }
+
+
+
+    </style>
+    
+</head>
+<body>
+    <div>
+        <input type="password" id="pass">
+        <i class="fa fa1" id="eye" ></i>
+    </div>
+
+    <script>
+        var pass= document.getElementById("pass");
+        var eye = document.getElementById("eye");
+
+       eye.onclick = function(){
+            if( pass.type == "password"){
+                pass.type = "text";
+                eye.className = 'fa2'
+                
+            }
+            else{
+                pass.type = "password";
+                eye.className = 'fa1'
+                
+            }
+        }
+    </script>
+
+
+</body>
+
+
+</html>
