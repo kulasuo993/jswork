@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  .main{
+    width: 20px;
+    position: fixed;
+}
+
+.disc1{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    /*background: red;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.disc2{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    /*background: red;*/
+    position: absolute;
+    top: 0;
+    right: -14px;
+    z-index: 2;
+}
+
+.square{
+    width: 20px;
+    height: 20px;
+    /*background: red;*/
+    transform: rotateZ(45deg);
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 1;
+}
+.bg-red{background-color:#e54d42;}
+.bg-orange{background-color:#f37b1d;}
+.bg-yellow{background-color:#fbbd08;}
+.bg-olive{background-color:#8dc63f;}
+.bg-green{background-color:#39b54a;}
+.bg-cyan{background-color:#1cbbb4;}
+.bg-blue{background-color:#0081ff;}
+.bg-purple{background-color:#6739b6;}
+.bg-mauve{background-color:#9c26b0;}
+.bg-pink{background-color:#e03997;}
+.bg-brown{background-color:#a5673f;}
+.bg-grey{background-color:#8799a3;}
+.bg-gray{background-color:#f0f0f0;}
+.bg-black{background-color:#333;}
+.bg-white{background-color:#fff;}
+.bg-gradual-red{background-image:linear-gradient(45deg,#f43f3b,#ec008c);}
+.bg-gradual-orange{background-image:linear-gradient(45deg,#ff9700,#ed1c24);}
+.bg-gradual-green{background-image:linear-gradient(45deg,#39b54a,#8dc63f);}
+.bg-gradual-purple{background-image:linear-gradient(45deg,#9000ff,#5e00ff);}
+.bg-gradual-pink{background-image:linear-gradient(45deg,#ec008c,#6739b6);}
+.bg-gradual-blue{background-image:linear-gradient(45deg,#0081ff,#1cbbb4);}
+
+
+    </style>
+    <link rel="stylesheet"  href="../css/zuoye.css">
+</head>
+<body>
+
+</body>
+<script src="../js/jquery-3.6.3.min.js"></script>
+<script src="../js/zuoye.js"></script>
+</html>
+<script src="../js/jquery-3.6.3.min.js"></script>
+<script>
+     // 颜色数组
+const color = ['bg-red', 'bg-orange', 'bg-yellow', 'bg-olive', 'bg-green', 'bg-cyan', 'bg-blue', 'bg-purple', 'bg-mauve', 'bg-pink', 'bg-brown', 'bg-grey', 'bg-gray', 'bg-black', 'bg-white', 'bg-gradual-red', 'bg-gradual-orange', 'bg-gradual-green', 'bg-gradual-purple', 'bg-gradual-pink', 'bg-gradual-blue']
+// 添加元素
+let addElement = function(top, left) {
+	let bg = color[Math.floor(Math.random() * (color.length - 1 + 1) + 1)]
+	$('body').append(`
+	    <div class="main" style="top: `+ (top-15) +`px; left: ` + (left-15) + `px;">
+	        <div class="disc1 `+ bg + `"></div>
+	        <div class="disc2 `+ bg + `"></div>
+	        <div class="square `+ bg + `"></div>
+	    </div>
+	`)
+	$('.main').animate({
+	    opacity: 0,
+	    top: '-=100px'
+	}, function (e) {
+		// 动画结束时删除自己，以免页面元素生成过多
+	    $(this).remove()
+	})
+}
+
+$(document).ready(function() {
+	// 鼠标点击
+    // $(document).on('click', function(event) {
+    //     addElement(event.pageY, event.pageX)
+    // })
+	
+	// 鼠标移动
+	$(document).on('mousemove', function(event) {
+		addElement(event.pageY, event.pageX)
+	})
+})
+
+</script>
